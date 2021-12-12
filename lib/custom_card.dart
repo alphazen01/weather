@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Custom_Card extends StatelessWidget {
+  final String? lebel;
+  final String? imageName;
+  final String? value;
+  final Color? color;
   const Custom_Card({
     Key? key,
+    this.lebel,this.imageName,this.value,
+    this.color
   }) : super(key: key);
 
   @override
@@ -19,6 +25,7 @@ class Custom_Card extends StatelessWidget {
             Positioned(
               top:30,
               child: Container(
+                
                 width: 230,
                 height: 274,
                 padding: EdgeInsets.only(bottom: 25),
@@ -32,22 +39,15 @@ class Custom_Card extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight
                  ),
-                 borderRadius: BorderRadius.circular(40),
-                 boxShadow: [
-                   BoxShadow(
-                    color:Color(0xff4B3EAE).withOpacity(0.5),
-                    spreadRadius: 10,
-                    blurRadius: 25,
-                    offset: Offset(0,7)  
-                   )
-                 ] 
+                 borderRadius: BorderRadius.circular(40), 
                 ),
                 child: Column(
                   children: [
+                    
                     Padding(
                       padding: const EdgeInsets.only(top: 30),
                       child: Text(
-                        "06:00 AM",
+                        "$lebel",
                          style: TextStyle(
                          fontSize: 20,
                          fontWeight: FontWeight.bold,
@@ -55,15 +55,16 @@ class Custom_Card extends StatelessWidget {
                         ),
                         ),
                     ),
-                   Image.asset("assets/Cloud_3_zap.png"),
+                   Image.asset("assets/$imageName.png"),
                     Text(
-                      "24°",
+                      "$value",
                       style: TextStyle(
                        fontSize: 72,
                        fontWeight: FontWeight.bold,
                        color: Colors.white 
                       ),
-                      ),   
+                      ),
+                         
                   ],
                 ),
               ),
