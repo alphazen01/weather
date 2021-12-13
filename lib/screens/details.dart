@@ -6,6 +6,16 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Color>clrList=[
+     Color(0xff00CC39),
+      Color(0xffFF4343),
+      Color(0xffFFBE3C),
+      Color(0xff00CC39),
+      Color(0xffFF4343),
+      Color(0xffFFBE3C),
+      Color(0xff00CC39),
+      Color(0xffFF4343),  
+    ];
     return SafeArea(
       child: Scaffold(
        body: SingleChildScrollView(
@@ -151,6 +161,7 @@ class DetailsScreen extends StatelessWidget {
                     scrollDirection:Axis.vertical ,
                     itemCount: 8,
                     itemBuilder: (context,index){
+                      var clr=clrList[index%clrList.length];
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: DailyCard(
