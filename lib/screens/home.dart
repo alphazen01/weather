@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:demo/custom_card.dart';
+import 'package:demo/screens/details.dart';
+import 'package:demo/widgets/custom_card.dart';
 import 'package:demo/widgets/column_builder.dart';
 import 'package:demo/widgets/weather_card.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +84,14 @@ class HomeScreen extends StatelessWidget {
                                    fontWeight: FontWeight.bold
                                  ),
                           ),
-                          Icon(Icons.arrow_forward_ios)
+                          IconButton(
+                            onPressed: (){
+                              Navigator.push(
+                              context,  MaterialPageRoute(
+                                builder: (context)=>DetailsScreen()));
+                            }, 
+                            icon: Icon(Icons.arrow_forward_ios)
+                            )
                            ],
                            ),
                          ],
@@ -104,29 +112,19 @@ class HomeScreen extends StatelessWidget {
                       margin: EdgeInsets.only(top: 620),
                       height:320,
                       child: ListView.builder(
-                        itemCount: 6,
+                        // itemCount: 6,
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context,index){
                           return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                Custom_Card( 
-                                  color: Colors.white,
-                                  lebel: "06:00 AM",
-                                  imageName: "Cloud_3_zap",
-                                  value: "24°",
-                                ),
-                                Custom_Card(
-                                  
-                                  lebel: "08:00 AM",
-                                  imageName: "Cloud_3_zap",
-                                  value: "26°",
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                              child: Custom_Card(
+                                primary:index==0?true:false, 
+                                lebel: "06:00 AM",
+                                imageName: "Cloud_3_zap",
+                                value: "24°",
+                              ),
+                            
                           );
                         }
                         ),
@@ -153,18 +151,19 @@ class HomeScreen extends StatelessWidget {
                                ),
                                ColumnBuilder(
                                  imageName: "Vector",
-                                 value: "75 %",
-                                 label: "Humidity",
+                                 value: " 8 km/h",
+                                 label: "Wind",
+                               ),
+                               ColumnBuilder(
+                                 imageName: "Vector_(4)",
+                                 value: "1011",
+                                 label: "Air Pressure",
+                                 
                                ),
                                ColumnBuilder(
                                  imageName: "Vector",
-                                 value: "75 %",
-                                 label: "Humidity",
-                               ),
-                               ColumnBuilder(
-                                 imageName: "Vector",
-                                 value: "75 %",
-                                 label: "Humidity",
+                                 value: "6 km",
+                                 label: "Visibility",
                                ),
                   
                               

@@ -1,3 +1,4 @@
+import 'package:demo/widgets/daily_card.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -29,36 +30,39 @@ class DetailsScreen extends StatelessWidget {
                  padding: const EdgeInsets.only(top:30,left: 60),
                  child: Column(
                    children: [
-                     Row(
-                      children: [
-                        Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Today’s Weather",
-                              style: TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white
+                     Container(
+                       color: Colors.teal,
+                       child: Row(
+                        children: [
+                          Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "Today’s Weather",
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Sunday, 8 March 2021",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white
+                              Text(
+                                "Sunday, 8 March 2021",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white
+                                ),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
+                            ],
+                          )
+                        ],
+                       ),
                      ),
                    ],
                  ),
@@ -141,161 +145,27 @@ class DetailsScreen extends StatelessWidget {
                    color: Colors.white,
                    borderRadius: BorderRadius.circular(40), 
                  ),
-                 child: Column(
-                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                   children: [
-                     Padding(
-                       padding: const EdgeInsets.only(right: 100),
-                       child: Text(
-                         "Future Weather",
-                         style: TextStyle(
-                           fontSize: 20,
-                           fontWeight: FontWeight.bold
-                         ),
-                    ),
-                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image.asset("assets/Sun_cloud_angled_rain.png"),
-                        Text(
-                          "29°",
-                          style: TextStyle(
-                         fontSize: 36,
-                         fontWeight: FontWeight.bold
-                       ),
+                 child:Container(
+                  height: 459,
+                  child: ListView.builder(
+                    scrollDirection:Axis.vertical ,
+                    itemCount: 8,
+                    itemBuilder: (context,index){
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: DailyCard(
+                          
+                          
+                          imageName: "Sun_cloud_angled_rain",
+                          value: "29°",
+                          label:"Future",
+                          blabel: "Monday",
+                          slabel: "9 March 2021",
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Monday",
-                              style: TextStyle(
-                         fontSize: 13,
-                         fontWeight: FontWeight.bold
-                       ), 
-                        ),
-                        Text(
-                          "9 March 2021",
-                          style: TextStyle(
-                        //  color: Color(0xffDDDBF3)
-                        color: Colors.black
-                       ),
-                          )
-                        ],
-                        )
-                      ],
-                    ),
-                    Divider(
-                      color: Color(0xffE0E0E0),
-                      thickness: 2,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image.asset("assets/Sun_cloud_little_rain.png"),
-                        Text(
-                          "22°",
-                          style: TextStyle(
-                         fontSize: 36,
-                         fontWeight: FontWeight.bold
-                       ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Tuesday",
-                              style: TextStyle(
-                         fontSize: 13,
-                         fontWeight: FontWeight.bold
-                       ), 
-                        ),
-                        Text(
-                          "10 March 2021",
-                          style: TextStyle(
-                        //  color: Color(0xffDDDBF3)
-                        color: Colors.black
-                       ),
-                          )
-                        ],
-                        )
-                      ],
-                    ),
-                    Divider(
-                      color: Color(0xffE0E0E0),
-                      thickness: 2,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image.asset("assets/Big_rain_drops.png"),
-                        Text(
-                          "19°",
-                          style: TextStyle(
-                         fontSize: 36,
-                         fontWeight: FontWeight.bold
-                       ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Wednesday",
-                              style: TextStyle(
-                         fontSize: 13,
-                         fontWeight: FontWeight.bold
-                       ), 
-                        ),
-                        Text(
-                          "11 March 2021",
-                          style: TextStyle(
-                        //  color: Color(0xffDDDBF3)
-                        color: Colors.black
-                       ),
-                          )
-                        ],
-                        )
-                      ],
-                    ),
-                    Divider(
-                      color: Color(0xffE0E0E0),
-                      thickness: 2,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image.asset("assets/Sun_cloud_mid_rain.png"),
-                        Text(
-                          "28°",
-                          style: TextStyle(
-                         fontSize: 36,
-                         fontWeight: FontWeight.bold
-                       ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Thursday",
-                              style: TextStyle(
-                         fontSize: 13,
-                         fontWeight: FontWeight.bold
-                       ), 
-                        ),
-                        Text(
-                          "12 March 2021",
-                          style: TextStyle(
-                        //  color: Color(0xffDDDBF3)
-                        color: Colors.black
-                       ),
-                          )
-                        ],
-                        )
-                      ],
-                    )
-                   ],
-                 ),
+                      );
+                    }
+                    ), 
+                 )
                ),
              )
            ],
@@ -305,3 +175,4 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 }
+
