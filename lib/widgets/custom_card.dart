@@ -4,11 +4,13 @@ class Custom_Card extends StatelessWidget {
   final String? lebel;
   final String? imageName;
   final String? value;
-  final Color? color;
+  final bool primary;
+  
+  final IconData?icon;
   const Custom_Card({
     Key? key,
-    this.lebel,this.imageName,this.value,
-    this.color
+    this.lebel,this.imageName,this.value,this.icon, this.primary=false
+    
   }) : super(key: key);
 
   @override
@@ -30,7 +32,8 @@ class Custom_Card extends StatelessWidget {
                 height: 274,
                 padding: EdgeInsets.only(bottom: 25),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
+                  color: primary?null:Colors.white,
+                  gradient:primary? LinearGradient(
                   colors: [
                      Color(0xff4B3EAE),
                      Color(0xff766CC1),
@@ -38,7 +41,7 @@ class Custom_Card extends StatelessWidget {
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight
-                 ),
+                 ):null,
                  borderRadius: BorderRadius.circular(40), 
                 ),
                 child: Column(
@@ -51,7 +54,7 @@ class Custom_Card extends StatelessWidget {
                          style: TextStyle(
                          fontSize: 20,
                          fontWeight: FontWeight.bold,
-                         color: Colors.white 
+                         color:primary? Colors.white:Colors.black 
                         ),
                         ),
                     ),
