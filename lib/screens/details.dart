@@ -2,11 +2,7 @@ import 'package:demo/widgets/daily_card.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({ Key? key }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    List<Color>clrList=[
+ final List<Color>clrList=const[
      Color(0xff00CC39),
       Color(0xffFF4343),
       Color(0xffFFBE3C),
@@ -16,6 +12,12 @@ class DetailsScreen extends StatelessWidget {
       Color(0xff00CC39),
       Color(0xffFF4343),  
     ];
+  
+  const DetailsScreen({ Key? key }) : super(key: key);
+ 
+  @override
+  Widget build(BuildContext context) {
+   
     return SafeArea(
       child: Scaffold(
        body: SingleChildScrollView(
@@ -159,14 +161,14 @@ class DetailsScreen extends StatelessWidget {
                   height: 459,
                   child: ListView.builder(
                     scrollDirection:Axis.vertical ,
-                    itemCount: 8,
+                    itemCount: 7,
                     itemBuilder: (context,index){
-                      var clr=clrList[index%clrList.length];
+                     
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: DailyCard(
-                          
-                          
+                          color:clrList[index%clrList.length] ,
+                          hasDivider:index<6? true:false ,
                           imageName: "Sun_cloud_angled_rain",
                           value: "29°",
                           label:"Future",

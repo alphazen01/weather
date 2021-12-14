@@ -31,14 +31,14 @@ class WeatherCard extends StatelessWidget {
               end: Alignment.bottomRight
              ),
              borderRadius: BorderRadius.circular(40),
-             boxShadow: [
-               BoxShadow(
-                color:Color(0xff4B3EAE).withOpacity(0.5),
-                spreadRadius: 10,
-                blurRadius: 25,
-                offset: Offset(0,7)  
-               )
-             ] 
+            //  boxShadow: [
+            //    BoxShadow(
+            //     color:Color(0xff4B3EAE).withOpacity(0.5),
+            //     spreadRadius: 10,
+            //     blurRadius: 25,
+            //     offset: Offset(0,7)  
+            //    )
+            //  ] 
             ),
             child: Column(
               children: [
