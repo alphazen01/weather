@@ -12,6 +12,7 @@ class ColumnBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
      children: [
        Image.asset(
          "assets/$imageName.png",

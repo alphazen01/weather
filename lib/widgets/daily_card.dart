@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 
 class DailyCard extends StatelessWidget {
+  
   final String? label;
   final String? imageName;
   final String? value;
   final String? blabel;
   final String? slabel;
+  final Color?color;
+  final bool?hasDivider;
  
   const DailyCard({
+    
     Key? key,
     this.imageName,this.label,this.value,
-    this.blabel,this.slabel,
+    this.blabel,this.slabel,this.color,
+    this.hasDivider
 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+     
     return Container(
-      
+      color: color,
      
       child: Column(
         children: [
@@ -71,9 +77,11 @@ class DailyCard extends StatelessWidget {
             ],
           ),
           
-          Divider(
+         hasDivider==true? Divider(
             thickness: 3,
             color:Colors.red,
+          ):Divider(
+            thickness: 0,
           )
         ],
       ),
