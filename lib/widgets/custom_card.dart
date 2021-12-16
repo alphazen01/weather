@@ -5,21 +5,23 @@ class Custom_Card extends StatelessWidget {
   final String? imageName;
   final String? value;
   final bool primary;
+  final Color?color;
   
   final IconData?icon;
   const Custom_Card({
     Key? key,
-    this.lebel,this.imageName,this.value,this.icon, this.primary=false
+    this.lebel,this.imageName,
+    this.value,this.icon, 
+    this.primary=false,
+    this.color
     
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       width: 92,
       height: 132,
-      
       decoration: BoxDecoration(
         color: primary?null:Colors.white,
         gradient:primary? LinearGradient(
@@ -47,7 +49,7 @@ class Custom_Card extends StatelessWidget {
             ),
          Image.asset(
            "assets/$imageName.png",
-           scale: 2,
+           scale: 1.5,
            ),
           Text(
             "$value",
@@ -57,6 +59,7 @@ class Custom_Card extends StatelessWidget {
              color: Colors.white 
             ),
             ),
+          
                
         ],
       ),

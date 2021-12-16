@@ -6,8 +6,8 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen()
-      // home: DetailsScreen(),
+      // home: HomeScreen()
+      home: DetailsScreen(),
     )
   );
 }
