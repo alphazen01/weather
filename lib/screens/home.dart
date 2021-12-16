@@ -117,7 +117,13 @@ class HomeScreen extends StatelessWidget {
                                     color: Colors.black
                                   ),
                                 ),
-                                Icon(Icons.arrow_forward_ios, color: Colors.black,)
+                               IconButton(
+                                 onPressed: (){
+                                   Navigator.push(context, MaterialPageRoute(
+                                     builder: (context)=>DetailsScreen()));
+                                 }, 
+                                 icon: Icon(Icons.arrow_forward_ios)
+                                 )
                               ],
                             )
                           ],
@@ -134,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                               return Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 15),
                                 child: Custom_Card(
-                                 imageName: "assets/moon_cloud_fast_wind.png",
+                                 imageName: "Sun_cloud_angled_rain",
                                  lebel:  "06:00 AM",
                                  value: "23°" , 
                                  primary:index==0?true:false ,
@@ -142,7 +148,11 @@ class HomeScreen extends StatelessWidget {
                               );
                             }
                           ),
-                        ) 
+                        ),
+                          Divider(
+              thickness: 5,
+              color: Colors.red,
+            ) 
                     ],
                   ),
                 )
