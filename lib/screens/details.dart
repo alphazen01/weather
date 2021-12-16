@@ -133,7 +133,7 @@ class DetailsScreen extends StatelessWidget {
                               ),
                               ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: 7,
+                                 itemCount: 7,
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (contex,index){
                                   return DailyCard(
@@ -141,9 +141,11 @@ class DetailsScreen extends StatelessWidget {
                                     imageName: "Sun_cloud_angled_rain",
                                     date: "9 Marche 2021",
                                     day:"Monday" ,
+                                    hasDivider: index<6?true:false,
                                   );
                                 }
                                 ),
+                             
                             ],
                           ),
                         ),
