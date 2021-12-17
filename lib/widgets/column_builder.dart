@@ -16,8 +16,7 @@ class ColumnBuilder extends StatelessWidget {
      children: [
        Image.asset(
          "assets/$imageName.png",
-         height: 20,
-         width: 15,
+        
          ),
          SizedBox(
            height: 5,
