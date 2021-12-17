@@ -12,152 +12,149 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        color: Colors.purple,
-        child: Scaffold(
-          backgroundColor:  Color(0xffF1F0FA),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20,
+      child: Scaffold(
+        backgroundColor:  Color(0xffF1F0FA),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Pasuruan",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize:24
                 ),
-                Text(
-                  "Pasuruan",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize:24
-                  ),
-               ),
-               Text(
-                  "17.45 PM",
-                  style: TextStyle(
-                    
-                    fontSize:12
-                  ),
-               ),
-               SizedBox(
-                 height: 8,
-               ),
-                CarouselSlider(
-                    options: CarouselOptions(height: 300.0),
-                    items: [1,2,3,4,5].map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return WeatherCard();
-                        },
-                      );
-                    }).toList(),
-                  ),
-                Container(
-                   color: Color(0xff766CC1).withOpacity(0.35),
-                  margin: EdgeInsets.only(top: 80),
-                  child: Column(
-                    children: [
-                      Transform.translate(
-                        offset: Offset(0,-60),
-                        child: Container(
-                          height: 122,
-                          margin: EdgeInsets.symmetric(horizontal: 20),
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                ColumnBuilder(
-                                  imageName: "Vector",
-                                  label: "Humidity",
-                                  value: "75 %",
-                                ),
-                                ColumnBuilder(
-                                  imageName: "Vector",
-                                  label: "Humidity",
-                                  value: "75 %",
-                                ),
-                                ColumnBuilder(
-                                  imageName: "Vector",
-                                  label: "Humidity",
-                                  value: "75 %",
-                                ),
-                                ColumnBuilder(
-                                  imageName: "Vector",
-                                  label: "Humidity",
-                                  value: "75 %",
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                        Container(
-                        padding: EdgeInsets.only(top: 0),
+             ),
+             Text(
+                "17.45 PM",
+                style: TextStyle(
+                  
+                  fontSize:12
+                ),
+             ),
+             SizedBox(
+               height: 8,
+             ),
+              CarouselSlider(
+                  options: CarouselOptions(height: 300.0),
+                  items: [1,2,3,4,5].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return WeatherCard();
+                      },
+                    );
+                  }).toList(),
+                ),
+              Container(
+                 color: Color(0xff766CC1).withOpacity(0.35),
+                margin: EdgeInsets.only(top: 80),
+                child: Column(
+                  children: [
+                    Transform.translate(
+                      offset: Offset(0,-60),
+                      child: Container(
+                        height: 122,
                         margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Today",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Next 7 Days",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black
-                                  ),
-                                ),
-                               IconButton(
-                                 onPressed: (){
-                                   Navigator.push(context, MaterialPageRoute(
-                                     builder: (context)=>DetailsScreen()));
-                                 }, 
-                                 icon: Icon(Icons.arrow_forward_ios)
-                                 )
-                              ],
-                            )
-                          ],
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
                         ),
-                      ),
-                      Container(
-                          height: 140,
-                          margin: EdgeInsets.only(top: 32),
-                          child: ListView.builder(
-                            // reverse: false,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index){
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 15),
-                                child: Custom_Card(
-                                 imageName: "Sun_cloud_angled_rain",
-                                 lebel:  "06:00 AM",
-                                 value: "23°" , 
-                                 primary:index==0?true:false ,
-                                ),
-                              );
-                            }
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ColumnBuilder(
+                                imageName: "Vector",
+                                label: "Humidity",
+                                value: "75 %",
+                              ),
+                              ColumnBuilder(
+                                imageName: "tabler_wind",
+                                label: "Wind",
+                                value: "8 km/h",
+                              ),
+                              ColumnBuilder(
+                                imageName: "Vector (2)",
+                                label: "Air Pressure",
+                                value: "1011",
+                              ),
+                              ColumnBuilder(
+                                imageName: "ic_round-visibility",
+                                label: "Visibility",
+                                value: "6 km",
+                              ),
+                            ],
                           ),
                         ),
-                          Divider(
-              thickness: 5,
-              color: Colors.red,
-            ) 
-                    ],
-                  ),
-                )
-              ],
-            ),
+                      ),
+                    ),
+                      Container(
+                      padding: EdgeInsets.only(top: 0),
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Today",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Next 7 Days",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black
+                                ),
+                              ),
+                             IconButton(
+                               onPressed: (){
+                                 Navigator.push(context, MaterialPageRoute(
+                                   builder: (context)=>DetailsScreen()));
+                               }, 
+                               icon: Icon(Icons.arrow_forward_ios)
+                               )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                        height: 140,
+                        margin: EdgeInsets.only(top: 32),
+                        child: ListView.builder(
+                          // reverse: false,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index){
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              child: Custom_Card(
+                               imageName: "Sun_cloud_angled_rain",
+                               lebel:  "06:00 AM",
+                               value: "23°" , 
+                               primary:index==0?true:false ,
+                              ),
+                            );
+                          }
+                        ),
+                      ),
+                        Divider(
+            thickness: 5,
+            color: Colors.red,
+          ) 
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),
