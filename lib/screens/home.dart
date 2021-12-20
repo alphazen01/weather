@@ -1,16 +1,59 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:demo/screens/details.dart';
 import 'package:demo/widgets/custom_card.dart';
 import 'package:demo/widgets/column_builder.dart';
 import 'package:demo/widgets/weather_card.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  static const String path="HomeScreen";
   
   const HomeScreen({ Key? key }) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final String baseUrl="https://api.openweathermap.org/";
+  final String apiKey="eee222ea3ece225edcedf966de7163ba";
+  final String lat= "23.811358633150626";
+  final String lon="90.40008671517185";
+  final String api="data/2.5/onecall?";
+  
+
+
+  Map weatherData={};
+  Future getWeather()async{
+    final response = await http.get(Uri.parse(baseUrl+api+"lat=$lat"+"&"+"lon=$lon"+"&exclude=hourly,daily"+"&appid=$apiKey"));
+    if(response.statusCode==200){
+      setState(() {
+        weatherData=jsonDecode(response.body); 
+        // print("object:$weatherData");
+      });
+     
+    }
+  }
+@override
+  void initState() {
+    getWeather();
+
+    super.initState();
+  }
+
+  int convertTemp(temp){
+    int result= (temp -273).toInt();
+    return result;
+  }
+ 
+  
+
+  @override
   Widget build(BuildContext context) {
+    print(weatherData);
     return SafeArea(
       child: SafeArea(
         child: Scaffold(
@@ -22,14 +65,14 @@ class HomeScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  "Pasuruan",
+                  "${weatherData["timezone"]}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize:24
                   ),
                ),
                Text(
-                  "17.45 PM",
+                  "${weatherData["timezone_offset"]}",
                   style: TextStyle(
                     
                     fontSize:12
@@ -43,7 +86,11 @@ class HomeScreen extends StatelessWidget {
                     items: [1,2,3,4,5].map((i) {
                       return Builder(
                         builder: (BuildContext context) {
-                          return WeatherCard();
+                          return WeatherCard(
+                            temp: "${convertTemp(weatherData["current"]["temp"])}",
+                            weather:"${weatherData["current"]["weather"][0]["description"]}",
+                            dateTime: "${weatherData["current"]["dt"]}",
+                          );
                         },
                       );
                     }).toList(),
@@ -71,22 +118,22 @@ class HomeScreen extends StatelessWidget {
                                 ColumnBuilder(
                                   imageName: "Vector",
                                   label: "Humidity",
-                                  value: "75 %",
+                                  value: weatherData["current"]["humidity"].toString()
                                 ),
                                 ColumnBuilder(
                                   imageName: "tabler_wind",
                                   label: "Wind",
-                                  value: "8 km/h",
+                                  value: "${weatherData["current"]["wind_speed"]} km/h",
                                 ),
                                 ColumnBuilder(
                                   imageName: "Vector (2)",
                                   label: "Air Pressure",
-                                  value: "1011",
+                                  value: "${weatherData["current"]["pressure"]}",
                                 ),
                                 ColumnBuilder(
                                   imageName: "ic_round-visibility",
                                   label: "Visibility",
-                                  value: "6 km",
+                                  value: "${weatherData["current"]["visibility"]/1000}km",
                                 ),
                               ],
                             ),
@@ -172,6 +219,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 
 
 
